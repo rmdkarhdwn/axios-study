@@ -2,9 +2,10 @@ import useGetId from "../hooks/useGetId"
 
 
 export default function Main() {
-    console.log("Main 렌더링됨");
-    useGetId();
+    const name = useGetId();
     return (
-        <div>main</div>
+        <div>
+            {name?.map((n)=> <div key={n}>{n}</div>)}
+        </div>
     )
 }
