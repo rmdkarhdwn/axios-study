@@ -5,7 +5,8 @@ export default function Main() {
     const name = useGetId();
     return (
         <div>
-            {name?.map((n)=> <div key={n}>{n}</div>)}
+            {name?.map((n)=> <button key={n}>{n}</button>)}
         </div>
     )
 }
+
