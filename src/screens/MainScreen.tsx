@@ -6,7 +6,7 @@ export default function Main() {
     const name = useGetId();
     return (
         <MainContainer>
-            {name?.map((n)=> <Button key={n}>{n}</Button>)}
+            {name?.map((n)=> <Button selected={true} key={n}>{n}</Button>)}
         </MainContainer>
     )
 }
