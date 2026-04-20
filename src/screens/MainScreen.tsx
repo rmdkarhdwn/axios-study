@@ -1,11 +1,11 @@
 import {useState} from "react";
-import useGetId from "../hooks/useGetId"
+import useGetId from "../hooks/useGetUsers"
 import { MainContainer,Button } from "../styles/MainScreen.style";
 
 
 export default function Main() {
-    const [selectedName,setSelectedName] = useState<string | null>(null);
-    const { names, isLoading, error } = useGetId();
+    const [selectedUserId,setselectedUserId] = useState<string | null>(null);
+    const { users, isLoading, error } = useGetId();
     if (isLoading) {
         return <div>로딩중...</div>
     }
@@ -14,13 +14,13 @@ export default function Main() {
     }
     return (
         <MainContainer>
-            {names &&names.map((n)=>
+            {users &&users.map((user)=>
                 <Button
-                    selected={selectedName === n}
-                    key={n}
-                    onClick={()=>setSelectedName(n)}
+                    selected={selectedUserId === user.name}
+                    key={user.id}
+                    onClick={()=>setselectedUserId(user.name)}
                 >
-                {n}
+                {user.name}
             </Button>)}
         </MainContainer>
     )

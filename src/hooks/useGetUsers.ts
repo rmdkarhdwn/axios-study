@@ -1,4 +1,4 @@
-import { getPosts } from "../api/posts";
+import { getPosts } from "../api/get";
 import { useQuery } from "@tanstack/react-query";
 
 type User = {
@@ -12,7 +12,7 @@ export default function useGetId() {
         queryFn: getPosts,
     });
     return {
-        names : data?.map((d)=> d.name) || [],
+        users : data || [],
         isLoading,
         error
     }
