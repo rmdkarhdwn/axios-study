@@ -1,6 +1,6 @@
 import api from "./apiClient";
 
 export const postposts = async () => {
-    const res = api.patch('user');
+    const res = api.post('user');
     return res;
 }

@@ -1,8 +1,9 @@
 import api from "./apiClient";
 
-export const petchposts = async (id,username) => {
+export const updateUsername = async (id,username) => {
     const res = await api.patch(`/users/${id}`,{
-        username: username,
+        username : username,
     });
+    console.log(res.status)
     return res.data;
 }
