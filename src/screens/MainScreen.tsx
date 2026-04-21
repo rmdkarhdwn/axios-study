@@ -1,11 +1,12 @@
-import {useState} from "react";
-import useGetId from "../hooks/useGetUsers"
+import useGetUser from "../hooks/useGetUsers"
+import Header from "../Components/header";
+import { useNavigate } from "react-router-dom";
 import { MainContainer,Button } from "../styles/MainScreen.style";
 
 
 export default function Main() {
-    const [selectedUserId,setselectedUserId] = useState<string | null>(null);
-    const { users, isLoading, error } = useGetId();
+    const navigate = useNavigate();
+    const { users, isLoading, error } = useGetUser();
     if (isLoading) {
         return <div>로딩중...</div>
     }
@@ -14,11 +15,11 @@ export default function Main() {
     }
     return (
         <MainContainer>
-            {users &&users.map((user)=>
+            <Header></Header>
+            {users.map((user)=>
                 <Button
-                    selected={selectedUserId === user.name}
                     key={user.id}
-                    onClick={()=>setselectedUserId(user.name)}
+                    onClick={()=> navigate(`/user/${user.id}`)}
                 >
                 {user.name}
             </Button>)}

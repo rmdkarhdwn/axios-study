@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 type User = {
     id : number;
     name : string;
+    username : string;
 }
 
 export default function useGetId() {
