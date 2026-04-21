@@ -1,13 +1,17 @@
 import Header from "../Components/header"
 import useGetUser from "../hooks/useGetUsers"
-import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
 import { deleteUser } from "../api/delete";
 import { updateUsername } from "../api/petch";
 import { useParams } from "react-router-dom";
-import { MainContainer,Button } from "../styles/MainScreen.style";
+import { MainContainer, Button, UserCard, UserMeta } from "../styles/MainScreen.style";
 
-export default function Userdeta() {
+type UserDetailProps = {
+    theme: "light" | "dark";
+    toggleTheme: () => void;
+}
+
+export default function Userdeta({theme, toggleTheme} : UserDetailProps) {
     const { users, isLoading, error } = useGetUser();
     const params = useParams();
     const navigate = useNavigate();
@@ -29,22 +33,15 @@ export default function Userdeta() {
         await updateUsername(selectedUser.id,"Hello world")
     }
     return(
-        <MainContainer>
-            <Header></Header>
-            <Div>
-                {selectedUser.id}
-                /
-                {selectedUser.name}
-                /
-                {selectedUser.username}
-                <Button onClick={handlePetch}>수정</Button>
-                <Button onClick={handleDelete}>삭제</Button>
-            </Div>
+        <MainContainer $theme={theme}>
+            <Header theme={theme} toggleTheme={toggleTheme} />
+            <UserCard $theme={theme}>
+                <UserMeta $theme={theme}>ID: {selectedUser.id}</UserMeta>
+                <UserMeta $theme={theme}>Name: {selectedUser.name}</UserMeta>
+                <UserMeta $theme={theme}>Username: {selectedUser.username}</UserMeta>
+                <Button $theme={theme} onClick={handlePetch}>수정</Button>
+                <Button $theme={theme} onClick={handleDelete}>삭제</Button>
+            </UserCard>
         </MainContainer>
     )
 }
-const Div = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items:center;
-`
