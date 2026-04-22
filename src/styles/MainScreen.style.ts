@@ -29,7 +29,7 @@ export const MainContainer = styled.div<ThemeProps>`
                     radial-gradient(circle at 15% 10%, rgba(126, 162, 255, 0.2), transparent 32%),
                     radial-gradient(circle at 85% 80%, rgba(148, 201, 255, 0.22), transparent 34%),
                     linear-gradient(160deg, #eff4ff 0%, #dbe9ff 48%, #f5f8ff 100%);
-                color: #15203c;
+                    color: #15203c;
                 `}
     box-sizing: border-box;
 `;
