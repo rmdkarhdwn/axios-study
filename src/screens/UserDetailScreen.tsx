@@ -6,12 +6,8 @@ import { updateUsername } from "../api/petch";
 import { useParams } from "react-router-dom";
 import { MainContainer, Button, UserCard, UserMeta } from "../styles/MainScreen.style";
 
-type UserDetailProps = {
-    theme: "light" | "dark";
-    toggleTheme: () => void;
-}
 
-export default function Userdeta({theme, toggleTheme} : UserDetailProps) {
+export default function Userdeta(theme) {
     const { users, isLoading, error } = useGetUser();
     const params = useParams();
     const navigate = useNavigate();
@@ -34,7 +30,7 @@ export default function Userdeta({theme, toggleTheme} : UserDetailProps) {
     }
     return(
         <MainContainer $theme={theme}>
-            <Header theme={theme} toggleTheme={toggleTheme} />
+            <Header/>
             <UserCard $theme={theme}>
                 <UserMeta $theme={theme}>ID: {selectedUser.id}</UserMeta>
                 <UserMeta $theme={theme}>Name: {selectedUser.name}</UserMeta>

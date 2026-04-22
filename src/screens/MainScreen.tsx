@@ -3,13 +3,8 @@ import Header from "../Components/header";
 import { useNavigate } from "react-router-dom";
 import { MainContainer,Button } from "../styles/MainScreen.style";
 
-type UserDetailProps = {
-    theme: "light" | "dark";
-    toggleTheme: () => void;
-}
 
-
-export default function Main({theme, toggleTheme} : UserDetailProps) {
+export default function Main(theme) {
     const navigate = useNavigate();
     const { users, isLoading, error } = useGetUser();
     if (isLoading) {
@@ -20,7 +15,7 @@ export default function Main({theme, toggleTheme} : UserDetailProps) {
     }
     return (
         <MainContainer $theme={theme}>
-            <Header theme={theme} toggleTheme={toggleTheme} />
+            <Header/>
             {users.map((user)=>
                 <Button
                     key={user.id}

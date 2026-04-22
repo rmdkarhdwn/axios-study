@@ -1,13 +1,11 @@
 import styled from "styled-components";
 import { useLocation,useNavigate } from "react-router-dom";
 import type { ThemeMode } from "../styles/MainScreen.style";
+import { useThemeStore } from "../stores/themeStore";
 
-type HeaderProps = {
-    theme: ThemeMode;
-    toggleTheme: () => void;
-};
 
-export default function Header({theme, toggleTheme}: HeaderProps) {
+export default function Header() {
+    const { theme, toggleTheme } = useThemeStore();
     const location = useLocation()
 	const navigate = useNavigate()
     const showBackButton = location.pathname !== "/";
