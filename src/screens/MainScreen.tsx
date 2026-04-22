@@ -2,9 +2,11 @@ import useGetUser from "../hooks/useGetUsers"
 import Header from "../Components/header";
 import { useNavigate } from "react-router-dom";
 import { MainContainer,Button } from "../styles/MainScreen.style";
+import { useThemeStore } from "../stores/themeStore";
 
 
-export default function Main(theme) {
+export default function Main() {
+    const { theme } = useThemeStore();
     const navigate = useNavigate();
     const { users, isLoading, error } = useGetUser();
     if (isLoading) {

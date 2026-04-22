@@ -5,9 +5,11 @@ import { deleteUser } from "../api/delete";
 import { updateUsername } from "../api/petch";
 import { useParams } from "react-router-dom";
 import { MainContainer, Button, UserCard, UserMeta } from "../styles/MainScreen.style";
+import { useThemeStore } from "../stores/themeStore";
 
 
-export default function Userdeta(theme) {
+export default function Userdeta() {
+    const { theme } = useThemeStore();
     const { users, isLoading, error } = useGetUser();
     const params = useParams();
     const navigate = useNavigate();
